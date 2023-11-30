@@ -10,12 +10,18 @@ import NeonButtonUp from '../common/NeonButtonUp'
 import { useInView } from 'react-intersection-observer'
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '@/app/firebase'
+import SentFailed from './SentFailed'
+import SentSuccess from './SentSuccess'
 
 function Contact() {
  
   const [name, setName] = useState(null)
   const [email, setEmail] = useState(null)
   const [text, setText] = useState(null)
+  
+  const [sentSuccess, setSentSuccess] = useState(null)
+
+
 
 
   const { ref: contactRef, inView: visible } = useInView({
@@ -33,8 +39,10 @@ function Contact() {
         text: text
       }).then((res) => {
         console.log('success: ', res)
+        setSentSuccess(true)
       }).catch((err) => {
         console.log('error: ', err)
+        setSentSuccess(false)
       })
     }
   }
@@ -45,6 +53,8 @@ function Contact() {
       <div className='lgt:w-3/6'>
         <Title title="Contact"/>
 
+      {
+        sentSuccess === null ?
         <div ref={contactRef} className={`flex flex-col justify-center mx-auto 2xl:w-[70%] contact ${visible ? 'contactShow' : 'contactHidden'}`} >
           <div className='mb-2 p-4'>
             <strong className='text-blue-500 text-xl'>Do you have a question? <br></br>Contact me.</strong>
@@ -58,9 +68,15 @@ function Contact() {
               console.log(text, name, email);
               submitForm(e)
             }}>
-        Submit
-    </button>
+            Submit
+          </button>
         </div>
+        : sentSuccess === true ?
+        <SentSuccess/>
+
+        : 
+        <SentFailed/>
+        }
       </div>
       <div className='flex justify-center mx-auto relative smt:hidden z-[61]'>
         <NeonButtonUp text="Home" section="about"/>
