@@ -16,7 +16,6 @@ const Slider = () => {
               activeSlide === slide ? 'block' : 'hidden'
             }`}
           >
-     
             <Image src='/findiful.png' width={306} height={256}/>
           </div>
         ))}

@@ -35,7 +35,7 @@ function ProjectsContainerTwo() {
           onMouseLeave={() => setHoveredProject(null)}
           onTouchStart={() => setHoveredProject(index)}
         >
-          <img src={project.image} alt={project.alt} className="w-full" />
+          <img src={project.image} alt={project.alt} className="w-full " />
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-2xl text-center text-white font-roboto font-medium transition duration-300 ease-in group-hover:text-white group-hover:bg-gray-800 group-hover:bg-opacity-100 transition ">
             {hoveredProject !== index ?  <p className=''>{project.defaultText}</p> : 
                 <div className='flex flex-col justify-around slideFromBottom slideFromTop h-full w-full smt:py-4 md:py-4'>
