@@ -9,7 +9,6 @@ import SkillLogos from '../visuals/SkillLogos'
 function About() {
   return (
     <div id='more' className='flex flex-col min-h-screen relative justify-evenly mt-16'>
-      {/* <Title title="About"/> */}
       <div className='flex flex-row smt-1100:flex-col w-5/6 mx-auto'>
         
         <div className='flex-1'>

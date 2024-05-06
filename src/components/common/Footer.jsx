@@ -1,15 +1,8 @@
-import Link from 'next/link'
 import React from 'react'
 
 function Footer() {
   return (
     <footer className="flex flex-col space-y-10 justify-center m-10 p-8 relative">
-
-        {/* <nav className="flex justify-center flex-wrap gap-6 font-medium ">
-            <Link className="hover:text-gray-900 text-white" href="/privacy">Privacy</Link>
-            <Link className="hover:text-gray-900 text-white" href="/terms">Terms</Link>
-            <Link className="hover:text-gray-900 text-white" href="mailto:">Contact</Link>
-        </nav> */}
 
         <div className="flex justify-center space-x-5">
             <a href="mailto:yassine.moumouh@hotmail.com" className="text-white">

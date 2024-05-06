@@ -1,7 +1,6 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
-import PrimaryButton from '../common/PrimaryButton'
+import React, { useState } from 'react';
 import Title from '../common/Title'
 import { useInView } from 'react-intersection-observer';
 import NeonButton from '../common/NeonButton';
@@ -9,9 +8,11 @@ import NeonButton from '../common/NeonButton';
 
 function ProjectsContainerTwo() {
   const projects = [
-    { image: '/findiful.png', alt: 'Hanging Planters', defaultText: 'Findiful', hoverText: 'Findiful', tech: ['NodeJs, ElectronJs, React, Firebase, Stripe'], website: 'https://findiful.com'},
-    { image: '/epc247.png', alt: 'Planter Stand with Pots', defaultText: 'EPC247', hoverText: 'EPC247',tech: ['NextJs, Styled Components, Firebase'], website: 'https://epc247.be'},
-    { image: '/naturesGlitch.png', alt: 'Watering Cans', defaultText: 'Natures Glitch', hoverText: 'NaturesGlitch', tech: ['NextJs, NodeJs, Tailwind, CMS, nginx, mysql'], website: 'https://naturesglitch.com'},
+    { image: '/findiful.png', alt: 'findiful', defaultText: 'Findiful', hoverText: 'Findiful', tech: ['NodeJs, ElectronJs, React, Firebase, Stripe'], website: 'https://findiful.com'},
+    { image: '/epc247.png', alt: 'epc247', defaultText: 'EPC247', hoverText: 'EPC247',tech: ['NextJs, Styled Components, Firebase'], website: 'https://epc247.be'},
+    { image: '/naturesGlitch.png', alt: 'naturesGlitch', defaultText: 'Natures Glitch', hoverText: 'NaturesGlitch', tech: ['NextJs, NodeJs, Tailwind, CMS, nginx, mysql'], website: 'https://naturesglitch.com'},
+    { image: '/nsapp.png', alt: 'NSapp', defaultText: 'Nightshop App', hoverText: 'Nightshop App', tech: ['NextJs, Tailwind, IN PROGRESS...'], website: 'https://stingray-app-3ozgo.ondigitalocean.app'},
+
   ];
 
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -46,7 +47,7 @@ function ProjectsContainerTwo() {
                             ))
                         }
                     </span>
-                    <button className={`bottomUp text-xl smt:text-md lgt:font-bold relative lgt-1400:w-2/5 mx-auto mt-5 z-50 border-[3px] smt:border-[2px] border-[#3B82F6] text-[#3B82F6] py-3 smt:py-1 px-8 smt:px-5 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-blue-500/100 translate-y- slide `}>
+                    <button onClick={() => window.open(project.website)} className={`bottomUp text-xl smt:text-md lgt:font-bold relative lgt-1400:w-2/5 mx-auto mt-5 z-50 border-[3px] smt:border-[2px] border-[#3B82F6] text-[#3B82F6] py-3 smt:py-1 px-8 smt:px-5 transition-all duration-300 shadow-lg shadow-blue-500/50 hover:shadow-blue-500/100 translate-y- slide `}>
                         <a href={project.website} target='_blank'>View</a>
                     </button>
                 </div>

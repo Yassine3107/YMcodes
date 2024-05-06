@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import React, { useRef, useEffect } from 'react';
 
-// ... (your existing imports)
 
 function ScrollProjection() {
   const containerRef = useRef(null);
@@ -11,7 +10,6 @@ function ScrollProjection() {
   const navigate = useRouter();
 
   useEffect(() => {
-    // Set the height of the container based on the first image
     const setContainerHeight = () => {
       const firstImage = containerRef.current.querySelector('img');
       if (firstImage) {
@@ -20,13 +18,10 @@ function ScrollProjection() {
       }
     };
 
-    // Call the function when the component mounts
     setContainerHeight();
 
-    // Attach a resize event listener to recalculate the height if the window is resized
     window.addEventListener('resize', setContainerHeight);
 
-    // Cleanup the event listener when the component is unmounted
     return () => {
       window.removeEventListener('resize', setContainerHeight);
     };
@@ -35,7 +30,6 @@ function ScrollProjection() {
   useEffect(() => {
     const container = containerRef.current;
 
-    // Auto-scroll smoothly only when the component is hovered
     const autoScroll = () => {
 
       if (!isHovered.current) {
@@ -52,10 +46,8 @@ function ScrollProjection() {
       }
     };
 
-    // Auto-scroll every 3 seconds
     const intervalId = setInterval(autoScroll, 3000);
 
-    // Cleanup the interval when the component is unmounted
     return () => {
       clearInterval(intervalId);
     };

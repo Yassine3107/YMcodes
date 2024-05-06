@@ -12,7 +12,6 @@ function Hero() {
     <div id='about' className='flex flex-col justify-evenly min-h-screen smt:mt-[100px]'>
       <div className='grid grid-rows-2 2xl:flex 2xl:flex-row justify-center w-5/6 mx-auto relative items-center'>
           <div className='flex flex-col 2xl:flex-1'>
-            {/* <Typewriter/> */}
             <Info/>
             <div className='p-8 smt:pb-0 smt:flex smt:flex-col '>
               <PrimaryButton pushTo="projects" text='Projects'/>

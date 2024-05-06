@@ -1,8 +1,8 @@
 'use client'
-import Link from 'next/link';
-
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(true);

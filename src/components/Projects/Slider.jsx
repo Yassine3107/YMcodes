@@ -1,6 +1,5 @@
 'use client'
 import Image from 'next/image';
-// components/Slider.js
 import { useState } from 'react';
 
 const Slider = () => {
@@ -10,7 +9,6 @@ const Slider = () => {
   return (
     <div className="bg-teal-100 h-screen flex justify-center">
       <div className="max-w-4xl mx-auto relative">
-        {/* Slides */}
         {slides.map((slide) => (
           <div
             key={slide}
@@ -18,14 +16,11 @@ const Slider = () => {
               activeSlide === slide ? 'block' : 'hidden'
             }`}
           >
-            {/* <span className="w-12 text-center">{slide}</span>
-            <span className="text-teal-300">/</span>
-            <span className="w-12 text-center">{slides.length}</span> */}
+     
             <Image src='/findiful.png' width={306} height={256}/>
           </div>
         ))}
 
-        {/* Prev/Next Arrows */}
         <div className="absolute inset-0 flex">
           <div className="flex items-center justify-start w-1/2">
             <button
@@ -49,7 +44,6 @@ const Slider = () => {
           </div>
         </div>
 
-        {/* Buttons */}
         <div className="absolute w-full flex items-center justify-center px-4">
           {slides.map((slide) => (
             <button

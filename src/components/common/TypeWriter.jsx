@@ -1,6 +1,5 @@
 'use client'
 
-// components/Typewriter.js
 import React, { useEffect, useState } from 'react';
 
 const Typewriter = () => {

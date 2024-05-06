@@ -47,10 +47,10 @@ const Skills = () => {
       svgPaths.forEach((svgPath) => {
         const length = svgPath.getTotalLength();
         svgPath.style.transition = 'none';
-        svgPath.style.strokeDashoffset = length - 35; // Set the initial offset to the total length
+        svgPath.style.strokeDashoffset = length - 35;
         svgPath.getBoundingClientRect();
         svgPath.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
-        svgPath.style.strokeDashoffset = '0'; // Set the final offset to 0
+        svgPath.style.strokeDashoffset = '0'; 
       });
     };
 
