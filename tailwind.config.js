@@ -41,7 +41,10 @@ module.exports = {
       'lgt': {'min': '768px'},
       'lgt-1400': {'min': '1400px'},
       'smt-1400': {'max': '1400px'},
-      'smt-1100': {'max': '1100px'}
+      'smt-1100': {'max': '1100px'},
+      'smt-1130': {'max': '1129px'},
+      'lgt-1130': {'min': '1129px'}
+
 
 
 
