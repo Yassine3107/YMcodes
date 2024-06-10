@@ -60,7 +60,7 @@ function ProjectsContainerTwo() {
         </div>
       ))}
     </div>
-    <div className='flex justify-center mx-auto relative smt-1400:hidden z-[61]'>
+    <div className='flex justify-center mx-auto relative smt-1400:hidden z-[61] mt-8'>
         <NeonButton text="Contact" section="contact"/>
       </div>
     </div>
