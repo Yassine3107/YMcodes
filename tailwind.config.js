@@ -19,7 +19,8 @@ module.exports = {
       },
       boxShadow: {
         'bottom-sh': '0 15px 17px -7px rgba(0, 0, 0, 0.3)',
-      }
+      },
+      
     },
     screens: {
       'xs': {'max': '639px'},
@@ -50,5 +51,6 @@ module.exports = {
 
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 }

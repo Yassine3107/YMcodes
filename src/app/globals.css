@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -771,4 +771,93 @@ body {
 .contactShow {
   opacity: 1;
   transform: scale(1);
+} */
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.dot-line-wrapper {
+  position: relative;
+}
+
+.dot-line-wrapper .dot {
+  z-index: 10;
+}
+
+.dot-line-wrapper .line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+}
+
+.Scene {
+  width: 100%;
+  height: 100%;
+}
+
+.myway{
+  position: absolute !important;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.bring-front {
+  position: relative; /* or absolute/fixed */
+  z-index: 9999; /* Very high value to ensure it stays on top */
 }
