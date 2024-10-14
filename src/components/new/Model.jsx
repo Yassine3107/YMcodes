@@ -1,7 +1,6 @@
-import { useAnimations, useGLTF, useScroll } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useEffect, useRef, useState } from "react"
-import { Group } from "three"
+import { useEffect, useRef } from "react"
 
 useGLTF.preload("/rubik_key.glb")
 

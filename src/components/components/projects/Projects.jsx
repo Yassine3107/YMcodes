@@ -16,11 +16,6 @@ function Projects({cord}) {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [imageFullscreen, setImageFullscreen] = useState(false);
 
-
-    const handleSelectProject = (index) => {
-      setSelectedProject(index);
-    };
-
     useEffect(() => {
         if(cord > 0.2 && cord <= 0.3) {
             setIsVisible(true); 
@@ -56,8 +51,8 @@ function Projects({cord}) {
             <img 
                  className={`cursor-pointer transition-all duration-500 xs:pointer-events-auto xs:hidden ${
                   imageFullscreen
-                    ? "fixed inset-0 w-full h-full object-contain z-50" // Fullscreen styles
-                    : "max-h-[600px] max-w-[900px] w-full smt:max-h-[250px] smt:min-h-[210px] object-cover self-center" // Default small size
+                    ? "fixed inset-0 w-full h-full object-contain z-50"
+                    : "max-h-[600px] max-w-[900px] w-full smt:max-h-[250px] smt:min-h-[210px] object-cover self-center"
                 }`}
                 src={selectedProject.image} 
                 alt={selectedProject.alt}

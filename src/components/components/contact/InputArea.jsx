@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function InputArea({title, placeholder, logo}) {
+function InputArea({title, placeholder}) {
   return (
     <div>
         <label className="block text-xs font-bold text-gray-600 mt-3 gap-2">{title}</label>

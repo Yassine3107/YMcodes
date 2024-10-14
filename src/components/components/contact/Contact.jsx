@@ -24,10 +24,8 @@ function Contact({cord}) {
             setIsVisible(true); 
         } else {
             setIsVisible(false)
-        }
-        
+        } 
     }, [cord]);
-
 
 
   return (

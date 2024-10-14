@@ -29,12 +29,9 @@ function HomePage({cord}) {
                 <div className=''>
                   {logo}
                 </div>
-
               <h4 className="text-5xl text-center mt-10">Software Developer</h4>
               <div className="relative">
-                
               </div>
-
             {/* <Canvas>
               <Model rotation={rotation} />
             </Canvas> */}

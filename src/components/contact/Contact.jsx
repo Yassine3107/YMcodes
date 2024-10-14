@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState } from 'react'
-import InputField from '../common/InputFieldEmail'
 import Title from '../common/Title'
 import InputArea from '../common/InputArea'
 import InputFieldName from '../common/InputFieldName'
@@ -18,11 +17,7 @@ function Contact() {
   const [name, setName] = useState(null)
   const [email, setEmail] = useState(null)
   const [text, setText] = useState(null)
-  
   const [sentSuccess, setSentSuccess] = useState(null)
-
-
-
 
   const { ref: contactRef, inView: visible } = useInView({
     threshold: .2,
@@ -52,7 +47,6 @@ function Contact() {
     <div id='contact' className='flex flex-col relative items-center justify-evenly w-full min-h-screen'>
       <div className='lgt:w-3/6'>
         <Title title="Contact"/>
-
       {
         sentSuccess === null ?
         <div ref={contactRef} className={`flex flex-col justify-center mx-auto 2xl:w-[70%] contact ${visible ? 'contactShow' : 'contactHidden'}`} >

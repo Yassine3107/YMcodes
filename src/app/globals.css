@@ -858,6 +858,6 @@ body {
 }
 
 .bring-front {
-  position: relative; /* or absolute/fixed */
-  z-index: 9999; /* Very high value to ensure it stays on top */
+  position: relative;
+  z-index: 9999;
 }

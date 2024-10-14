@@ -26,7 +26,6 @@ function ContactForm() {
   const [tel, setTel] = useState('');
   const [zipcode, setZipcode] = useState('');
 
-
   return (
     <div className='lgt:max-w-4xl mx-auto py-20 smt:ml-3'>
 

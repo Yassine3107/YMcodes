@@ -20,12 +20,10 @@ function BounceScrollSwipe() {
         <div className="w-8 h-[2px] bg-slate-700"></div>
         <div>
             <div className="animate-bounce mx-2">
-            {isScrolling ? swipe : scroll}
-
+              {isScrolling ? swipe : scroll}
             </div>
             <span className="mx-2 text-sm text-center text-slate-700"> {isScrolling ? 'Swipe' : 'Scroll'}</span>
         </div>
-        
         <div className="w-8 h-[2px] bg-slate-700"></div>
       </div>
     );

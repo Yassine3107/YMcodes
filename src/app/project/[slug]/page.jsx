@@ -11,14 +11,11 @@ const projects = [
   ];
 
 export async function generateStaticParams() {
-    
-   
     return projects.map((project) => ({
         slug: project.alt, 
         project: project
     }))
   }
-
 
 function page({params}) {
     const {slug, project} = params;

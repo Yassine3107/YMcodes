@@ -10,8 +10,6 @@ function Hologram() {
     <li className="proxz-nav__orbit">
       <a className="proxz-nav__satellite" href="#">
         <span className="proxz-nav__label">Next.JS
-        {/* <span className="proxz-nav__description">
-        </span> */}
         </span>
       </a>
     </li>

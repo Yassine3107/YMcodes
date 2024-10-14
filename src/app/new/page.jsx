@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import HomePage from "@/components/components/body/HomePage";
-import { useState } from 'react';
 import Navbar from "@/components/components/general/Navbar";
 import Who from "@/components/components/who/Who";
 import Skills from "@/components/components/skills/Skills";
@@ -15,12 +14,7 @@ const ScrollFrame = dynamic(() => import("@/components/components/body/ScrollFra
 
 
 export default function Home() {
-  // const [cord, setCord] = useState(0.0);
   const cord = useSelector((state) => state.menu.move);
-
-  const handleScrollChange = (newScrollValue) => {
-    // setCord(newScrollValue);
-  };
 
   return (
     <div className="overflow-hidden">
@@ -30,7 +24,6 @@ export default function Home() {
       <div className="">
         <Scene move={cord} className="absolute inset-0 z-0"/>
         <HomePage cord={cord} />
-        {/* <ScrollFrame onScrollChange={handleScrollChange} /> */}
         <ScrollFrame/>
         <Who cord={cord}/>
         <Skills cord={cord}/>   
