@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { setScrollTo } from "@/redux/slices/menuSlice";
 
-const cube = (<svg width="100" height="100" viewBox="0 0 24 24" class="looka-1j8o68f">
+const cube = (<svg className="xs:w-[50px]" viewBox="0 0 24 24" class="looka-1j8o68f">
 <defs id="SvgjsDefs1752"></defs>
 <g id="SvgjsG1753" featurekey="2ou6gm-0" transform="matrix(1, 0, 0, 1, -3, -3)" fill="#ffffff">
  
@@ -16,7 +18,7 @@ const cube = (<svg width="100" height="100" viewBox="0 0 24 24" class="looka-1j8
 </svg>)
 
 const rocket = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="relative z-[1000]" transform="rotate(45 12 12)"  width="30px" height="30px" viewBox="0 0 24 24" fill="white">
+  <svg  xmlns="http://www.w3.org/2000/svg" className="relative z-[1000]" transform="rotate(45 12 12)"  width="30px" height="30px" viewBox="0 0 24 24" fill="white">
     <rect width="24" height="24" fill="black" />
     
     <path
@@ -28,105 +30,126 @@ const rocket = (
   </svg>
 );
 
+const contact = (<svg className="xs:w-[50px]" fill="#ffffff" version="1.1" id="XMLID_276_" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="contact-us"> <g> <path d="M4,24v-5H0V0h23v19h-9.3L4,24z M2,17h4v3.7l7.3-3.7H21V2H2V17z"></path> </g> <g> <rect x="5" y="8" width="3" height="3"></rect> </g> <g> <rect x="10" y="8" width="3" height="3"></rect> </g> <g> <rect x="15" y="8" width="3" height="3"></rect> </g> </g> </g></svg>)
 
-const Navbar = () => {
+const paperplane = <svg className="xs:w-[25px]" fill="white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+
+const Navbar = ({cord}) => {
   const [selected, setSelected] = useState("home");
   const [xPos, setXpos] = useState();
   const [yPos, setYpos] = useState();
   const [line, setLine] = useState();
   const [indexOfSelectedItem, setIndexOfSelectedItem] = useState(0);
+  const dispatch = useDispatch();
 
 
-  const menuItems = ["home", "about", "skills", "projects"];
+  const menuItems = ["home", "about", "skills", "projects", "contact"];
   
   const dotRefs = useRef([]);
 
   useEffect(() => {
-    if (dotRefs.current.length) {
-      const position = dotRefs.current[menuItems.indexOf(selected)].getBoundingClientRect();
-      setXpos(position.x - 20)
-      setYpos(position.y - 10)
+    const updatePositions = () => {
+      if (dotRefs.current.length) {
+        const position = dotRefs.current[menuItems.indexOf(selected)].getBoundingClientRect();
+        setXpos(position.x - 20)
+        setYpos(position.y - 10)
+  
+        setLine(dotRefs.current[1].getBoundingClientRect().x - dotRefs.current[0].getBoundingClientRect().x)
+      }
+    };
 
-      setLine(dotRefs.current[1].getBoundingClientRect().x - dotRefs.current[0].getBoundingClientRect().x)
+    updatePositions();
 
-    }
+    window.addEventListener('resize', updatePositions)
+   
   }, [selected]);
 
+  useEffect(() => {
+      console.log("hier")
+      var cordRounded = Math.trunc(cord*100)/100;
+      console.log(cordRounded)
+      if (cordRounded === 0) {
+        setSelected("home");
+        setIndexOfSelectedItem(0)
+      } else if (cordRounded > 0 && cordRounded <= 0.1) {
+        setSelected("about");
+        setIndexOfSelectedItem(1)
+      } else if (cordRounded > 0.1 && cordRounded <= 0.2) {
+        setSelected("skills")
+        setIndexOfSelectedItem(2)
+      } else if (cordRounded > 0.2 && cordRounded <= 0.3) {
+        setSelected("projects")
+        setIndexOfSelectedItem(3)
+      } else if (cordRounded > 0.3 && cordRounded <= 1) {
+        setSelected("contact")
+        setIndexOfSelectedItem(4)
+      } else {
+        setSelected("home");
+        setIndexOfSelectedItem(0)
+      }
+    
+
+  },[cord])
+
   return (
-    <div className="flex justify-center w-full">
-      <div className="mt-5">
-        {cube}
-      </div>
-       <div className="absolute w-full">
-          <motion.div
-            className="absolute text-xl z-[100]"
-            animate={{
-              x: xPos,
-              y: yPos
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 60 }}
-          >
-            {rocket}
-          </motion.div>
+    <div>
+      <div className="flex justify-center w-full xs:px-2">
+        <div 
+          className="mt-5"
+           onClick={() => {
+            dispatch(setScrollTo(0))
+          }}>
+          {cube}
         </div>
-      <div className="relative grid grid-cols-4 gap-12 p-4">
-       
-{/* 
-        {menuItems.map((item, index) => (
-          <div key={item} className="flex flex-col items-center">
-            <button
-              className="font-semibold"
-              onClick={() => {setSelected(item); console.log(selectedPosition.x)}}
+        <div className="absolute w-full">
+            <motion.div
+              className="absolute text-xl z-[100]"
+              animate={{
+                x: xPos,
+                y: yPos
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 60 }}
             >
-              {item}
-            </button>
-            <span 
-              ref={el => dotRefs.current[index] = el} 
-              className="h-[5px] w-[5px] bg-white rounded-full mt-5 flex flex-col"
-            ></span>
+              {rocket}
+            </motion.div>
           </div>
-        ))} */}
+        <div className="relative grid grid-cols-5 gap-12 p-4 z-[10]">
 
-    {menuItems.map((item, index) => (
-      <div key={item} className="flex flex-col items-center relative 2xl:min-w-[200px]  xl:min-w-[150px] lg:mix-w-[120px]">
-        <button
-              className={`font-semibold mb-10 capitalize ${selected === item ? 'text-white' : 'text-slate-500'} ${(indexOfSelectedItem > index) ? 'text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-lime-400 transition-all duration-2000' : 'text-slate-500'}`}
-              onClick={() => {
-            setSelected(item);
-            setIndexOfSelectedItem(index);
-            console.log(indexOfSelectedItem)
-          }}
-        >
-          {item}
-        </button>
+      {menuItems.map((item, index) => (
+        <div key={item} className={`flex flex-col items-center relative  2xl:min-w-[200px]  xl:min-w-[150px] lg:mix-w-[120px]`}>
+          <button
+                className={`font-semibold mb-10 capitalize  xs:mt-5 ${selected === item ? 'text-white ' : 'text-slate-500 xs:invisible'} ${(indexOfSelectedItem > index) ? 'text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-lime-400 transition-all duration-2000' : 'text-slate-500'}`}
+                onClick={() => {
+                  dispatch(setScrollTo((index/10)))
+                }}
+          >
+            {item}
+          </button>
 
-        <div className="flex items-center justify-center relative">
-          <span
-            ref={(el) => (dotRefs.current[index] = el)}
-            className="h-[5px] w-[5px] bg-slate-600 rounded-full relative z-10 "
-          ></span>
+          <div className="flex items-center justify-center relative">
+            <span
+              ref={(el) => (dotRefs.current[index] = el)}
+              className="h-[5px] w-[5px] bg-slate-600 rounded-full relative z-10 "
+            ></span>
 
-          {index < menuItems.length - 1 && (
-            <span className={`absolute top-1/2 left-[50%] h-[2px] -translate-y-1/2 translate-x-[10px] transition-all duration-500 ${(indexOfSelectedItem > index) ? 'bg-gradient-to-r from-green-500 to-[#2A2722]' : 'bg-slate-600'  }`}
-              style={{ width: `${Math.round(line-20)}px` }}
-              
-            >
-            </span>
-          )}
+            {index < menuItems.length - 1 && (
+              <span className={`absolute top-1/2 left-[50%] h-[2px] -translate-y-1/2 translate-x-[10px] transition-all duration-500 ${(indexOfSelectedItem > index) ? 'bg-gradient-to-r from-green-500 to-[#2A2722]' : 'bg-slate-600'  }`}
+                style={{ width: `${Math.round(line-20)}px` }}
+              >
+              </span>
+            )}
+          </div>
+        
         </div>
-       
-      </div>
-))}
-
-
-
-
-      </div>
-      <div>
-      <button className='border-2 border-slate-700 hover:border-1 hover:bg-gradient-to-r from-green-500 to-lime-400 text-white py-2 px-3 rounded-full mt-6'>
-        Contact Me
-      </button>
+  ))}
         </div>
+        
+        <div 
+          className='relative z-[10] mt-5'
+          onClick={() => dispatch(setScrollTo((0.4)))}>
+            {paperplane}
+        </div>
+      </div>
     </div>
   );
 };

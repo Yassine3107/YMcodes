@@ -13,7 +13,7 @@ function Loader() {
 
 export default function Scene({move}) {
   return (
-    <Canvas gl={{ antialias: true }} dpr={[1, 1.5]} className="absolute inset-0 myway">
+    <Canvas gl={{ antialias: true, version:"webgl1" }} dpr={[1, 1.5]} className="absolute inset-0 myway">
       <directionalLight position={[-5, -5, 5]} intensity={4} />
       <Suspense fallback={<Loader />}>
         <ScrollControls damping={0.5} pages={3}>

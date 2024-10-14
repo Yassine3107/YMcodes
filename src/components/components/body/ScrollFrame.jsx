@@ -1,32 +1,46 @@
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { setMove, setScrollTo } from "@/redux/slices/menuSlice";
+import React, { useEffect, useRef } from "react";
 
 export default function ScrollFrame({ onScrollChange }) {
-  const handleScroll = (event) => {
-    const scrollPosition = event.target.scrollTop; // This is the vertical scroll position of the div
+  const scrollContainerRef = useRef(null);
+  const dispatch = useDispatch();
+  const scrollTo = useSelector((state) => state.menu.scrollTo);
 
-    // Get the total scrollable height of the div
-    const scrollableHeight = event.target.scrollHeight - event.target.clientHeight;
+  const scrollToPosition = (scrollPercentage) => {
+    
+    const scrollableHeight = scrollContainerRef.current.scrollHeight - scrollContainerRef.current.clientHeight;
+    const newScrollTop = scrollableHeight * scrollPercentage;
 
-    // Normalize the scroll position between 0 and 1
-    let normalizedScroll = scrollPosition / scrollableHeight;
-
-    // Slow down the scroll movement (10 times slower)
-    normalizedScroll = normalizedScroll ;
-    console.log(normalizedScroll)
-    // Ensure the value stays between 0 and 1
-    const smoothedScroll = Math.min(Math.max(normalizedScroll, 0), 1); // Clamps between 0 and 1
-    console.log(smoothedScroll)
-    // Call the parent callback to update the scroll value
-    onScrollChange(smoothedScroll);
+    scrollContainerRef.current.scrollTo({
+      top: newScrollTop,
+      behavior: 'smooth', 
+    });
   };
 
-  return (
-    <div 
-    className="max-h-screen w-full overflow-y-auto relative top-[-10px] z-[10] no-scrollbar" // Add 'no-scrollbar' class
-    onScroll={handleScroll} 
-    >
-    <p className="h-[10000px]"> </p>
-    </div>
+  const handleScroll = (event) => {
+    const scrollPosition = event.target.scrollTop;
+    const scrollableHeight = event.target.scrollHeight - event.target.clientHeight;
+    let normalizedScroll = scrollPosition / scrollableHeight;
+    normalizedScroll = normalizedScroll;
+    const smoothedScroll = Math.min(Math.max(normalizedScroll, 0), 1);
+    dispatch(setMove(smoothedScroll));    
+  };
 
+  useEffect(() => {
+    if (scrollTo !== null) {
+      scrollToPosition(scrollTo);
+    }  
+  }, [scrollTo])
+
+  return (
+    <div
+      ref={scrollContainerRef}
+      className="max-h-screen w-full overflow-y-auto relative top-[-10px] z-[10] no-scrollbar"
+      onScroll={handleScroll}
+    >
+      <p className="h-[8000px]">
+      </p>
+    </div>
   );
 }

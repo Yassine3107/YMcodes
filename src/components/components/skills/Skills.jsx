@@ -3,10 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const Skills = ({cord}) => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-      if(cord > 0.1 && cord < 0.2) {
+      if(cord > 0.1 && cord <= 0.2) {
+    
           setIsVisible(true); 
       } else {
           setIsVisible(false)
@@ -93,19 +94,19 @@ const Skills = ({cord}) => {
   }, [loading]);
 
   return (
-    <div className={`absolute top-1/2 right-52 transform -translate-y-1/2 min-w-[500px] border p-5 bg-black bg-opacity-90 transform transition-transform duration-700 ${
-      isVisible ? 'translate-x-0' : 'translate-y-[100%]'
+    <div className={`absolute z-[100] pointer-events-none xs:py-2 top-1/2 right-52 xs:right-14 xs:left-3 transform -translate-y-1/2 min-w-[500px] xs:min-w-[300px] border p-5 bg-black bg-opacity-30 xs:bg-opacity-30 transform transition-transform duration-700 ${
+      isVisible ? 'translate-x-0' : 'translate-x-[200%] hidden'
     }`}>
       <div
         ref={skillsRef}
         className="mx-auto relative"
       >
-        <h4 className="text-3xl md:text-5xl dark:text-white font-bold mb-6">Skills</h4>
+        <h4 className="text-3xl md:text-5xl xs:text-lg dark:text-white font-bold mb-6 xs:mb-2">Skills</h4>
         {skills.map((skill, index) => (
           <div className="mb-2" key={index}>
             <div className="flex flex-row justify-between py-1">
-              <span className="text-base text-gray-lite font-semibold text-white">{skill.name}</span>
-              <span className="text-base font-semibold text-gray-lite pr-5 text-white">{skill.perc}%</span>
+              <span className="text-base text-gray-lite font-semibold text-white xs:text-sm">{skill.name}</span>
+              <span className="text-base font-semibold text-gray-lite pr-5 text-white xs:text-sm">{skill.perc}%</span>
             </div>
             <svg className="" viewBox="0 0 100 3" preserveAspectRatio="none">
               <path

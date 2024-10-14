@@ -6,6 +6,7 @@ import VericalLines from '@/components/VericalLines'
 import Footer from '@/components/common/Footer'
 import Stars from '@/components/Stars'
 import Navbar from '@/components/components/general/Navbar'
+import Providers from '@/redux/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,14 +19,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='scroll-smooth'>
       <body className={inter.className + ' overflow-hidden'}>
-      <Navbar/>
-
-        {/* <NavBar/> */}
-        {/* <VericalLines/> */}
-        {/* <Stars/> */}
-        {/* <Windows/> */}
-        {children}
-        {/* <Footer/> */}
+        <Providers>
+          {/* <Navbar/> */}
+          {/* <NavBar/> */}
+          {/* <VericalLines/> */}
+          {/* <Stars/> */}
+          {/* <Windows/> */}
+          {children}
+          {/* <Footer/> */}
+        </Providers>
       </body>
     </html>
   )

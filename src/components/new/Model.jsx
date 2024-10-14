@@ -6,27 +6,24 @@ import { Group } from "three"
 useGLTF.preload("/rubik_key.glb")
 
 export default function Model({move}) {
-  const group = useRef(null) // Reference to the group containing the 3D object
-  const { nodes, materials, animations, scene } = useGLTF("/rubik_key.glb")
-  const { actions, clips } = useAnimations(animations, scene)
-  const scroll = useScroll()
-  const [rotation, setRotation] = useState();
+  const group = useRef(null) 
+  const { scene } = useGLTF("/rubik_key.glb")
+
 
   useEffect(() => {
-    console.log(move)
+    
   },[move])
-  // Control rotation manually using useFrame
+  
   useFrame(() => {
     if (group.current) {
-      // Rotate based on scroll, mouse, or any other input.
-      // Adjust the values here to set rotation speed and direction
-      const rotationSpeed = 2 * Math.PI; // Adjust the multiplier to control speed
+      
+      const rotationSpeed = 2 * Math.PI;
       const scrollRotation = move * rotationSpeed;
 
-      // Apply rotation to all axes (x, y, z) if needed
+     
       group.current.rotation.x = scrollRotation;
       group.current.rotation.y = scrollRotation;
-      group.current.rotation.z = scrollRotation / 2; // Optional, adjust as needed
+      group.current.rotation.z = scrollRotation / 2;
     }
   })
 
