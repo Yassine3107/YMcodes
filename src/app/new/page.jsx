@@ -17,7 +17,7 @@ export default function Home() {
   const cord = useSelector((state) => state.menu.move);
 
   return (
-    <div className="overflow-hidden">
+<div className="relative w-full h-full overflow-x-hidden overflow-y-hidden">
       <Navbar cord={cord}/>
        <main className="flex flex-col mt-10">
        

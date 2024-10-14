@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Title from '../common/Title'
 import InputArea from '../common/InputArea'
 import InputFieldName from '../common/InputFieldName'
@@ -41,6 +41,7 @@ function Contact() {
       })
     }
   }
+
 
 
   return (

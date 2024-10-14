@@ -1,20 +1,37 @@
-import ProjectsContainerTwo from '@/components/Projects/ProjectsContainerTwo'
-import Hero from '@/components/hero/Hero'
-import About from '@/components/about/About'
-import Contact from '@/components/contact/Contact'
+'use client'
 
-export const metadata = {
-  title: "I specialize in websites and desktop apps, transforming ideas into sleek, interactive, and user-friendly experiences.",
-  description: "Welcome to my corner of the digital realm. I specialize in websites and desktop apps, transforming ideas into sleek, interactive, and user-friendly experiences. Join me on a journey where innovation meets functionality."
-};
+import dynamic from "next/dynamic";
+import HomePage from "@/components/components/body/HomePage";
+import Navbar from "@/components/components/general/Navbar";
+import Who from "@/components/components/who/Who";
+import Skills from "@/components/components/skills/Skills";
+import Projects from "@/components/components/projects/Projects";
+import Contact from "@/components/components/contact/Contact";
+import { useSelector } from "react-redux";
+
+const Scene = dynamic(() => import("@/components/new/Scene"), { ssr: false });
+const ScrollFrame = dynamic(() => import("@/components/components/body/ScrollFrame"), { ssr: false });
+
 
 export default function Home() {
+  const cord = useSelector((state) => state.menu.move);
+
   return (
-    <main>
-      <Hero/>
-      <About/>
-      <ProjectsContainerTwo/>
-      <Contact/>
+<div className="relative w-full h-full overflow-x-hidden overflow-y-hidden">
+      <Navbar cord={cord}/>
+       <main className="flex flex-col mt-10">
+       
+      <div className="">
+        <Scene move={cord} className="absolute inset-0 z-0"/>
+        <HomePage cord={cord} />
+        <ScrollFrame/>
+        <Who cord={cord}/>
+        <Skills cord={cord}/>   
+        <Projects cord={cord}/>
+        <Contact cord={cord}/>
+      </div>
     </main>
-  )
+    </div>
+   
+  );
 }

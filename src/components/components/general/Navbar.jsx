@@ -93,13 +93,13 @@ const Navbar = ({cord}) => {
     <div>
       <div className="flex justify-center w-full xs:px-2">
         <div 
-          className="mt-5"
+          className="relative z-[10] mt-5 cursor-pointer"
            onClick={() => {
             dispatch(setScrollTo(0))
           }}>
           {cube}
         </div>
-        <div className="absolute w-full">
+       { xPos && <div className="absolute w-full">
             <motion.div
               className="absolute text-xl z-[100]"
               animate={{
@@ -110,7 +110,7 @@ const Navbar = ({cord}) => {
             >
               {rocket}
             </motion.div>
-          </div>
+          </div>}
         <div className="relative grid grid-cols-5 gap-12 p-4 z-[10]">
 
       {menuItems.map((item, index) => (
@@ -143,7 +143,7 @@ const Navbar = ({cord}) => {
         </div>
         
         <div 
-          className='relative z-[10] mt-5'
+          className='relative z-[10] mt-5 cursor-pointer'
           onClick={() => dispatch(setScrollTo((0.4)))}>
             {paperplane}
         </div>

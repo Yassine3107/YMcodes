@@ -87,14 +87,13 @@ const Skills = ({cord}) => {
     if (skillsRef.current) {
       observer.observe(skillsRef.current);
     }
-
     return () => {
       observer.disconnect();
     };
   }, [loading]);
 
   return (
-    <div className={`absolute z-[100] pointer-events-none xs:py-2 top-1/2 right-52 xs:right-14 xs:left-3 transform -translate-y-1/2 min-w-[500px] xs:min-w-[300px] border p-5 bg-black bg-opacity-30 xs:bg-opacity-30 transform transition-transform duration-700 ${
+    <div className={`absolute z-[100]  pointer-events-none xs:py-2 top-1/2 right-52 xs:right-14 xs:left-3 transform -translate-y-1/2 min-w-[500px] xs:min-w-[300px] border p-5 bg-black bg-opacity-30 xs:bg-opacity-30 transform transition-transform duration-700 ${
       isVisible ? 'translate-x-0' : 'translate-x-[200%] hidden'
     }`}>
       <div

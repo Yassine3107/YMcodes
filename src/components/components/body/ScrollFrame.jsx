@@ -33,12 +33,14 @@ export default function ScrollFrame({ onScrollChange }) {
     }  
   }, [scrollTo])
 
+
   return (
     <div
       ref={scrollContainerRef}
       className="max-h-screen w-full overflow-y-auto relative top-[-10px] z-[10] no-scrollbar"
       onScroll={handleScroll}
     >
+      
       <p className="h-[8000px]">
       </p>
     </div>

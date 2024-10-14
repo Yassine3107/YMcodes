@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import InputField from './InputField';
 import InputArea from './InputArea';
+import SentSuccess from './SentSuccess';
+import SentFailed from './SentFailed';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '@/app/firebase';
 
 const logo = <svg xmlns="http://www.w3.org/2000/svg" width={14} fill="#a3e635" viewBox="0 0 512 512">
   {/* <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--> */}
@@ -18,6 +22,11 @@ function Contact({cord}) {
     const [name, setName] = useState('');
     const [lastname, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [text, setText] = useState('');
+    const [sentSuccess, setSentSuccess] = useState(null);
+    const [valid, setValid] = useState(false);
+
+
 
     useEffect(() => {
         if(cord > 0.3 && cord <= 1) {
@@ -28,22 +37,62 @@ function Contact({cord}) {
     }, [cord]);
 
 
+    const submitForm = async (e) => {
+      e.preventDefault();
+      console.log(name)
+      if (email !== '' && name !== '' && text != '') {
+        await addDoc(collection(db, 'messages'), {
+          name: name,
+          lastname: lastname,
+          email: email,
+          text: text
+        }).then((res) => {
+          console.log('success: ', res)
+          setSentSuccess(true)
+        }).catch((err) => {
+          console.log('error: ', err)
+          setSentSuccess(false)
+        })
+      }
+    }
+
+    useEffect(() => {
+      if (email !== '' && name !== '' && text != '') {
+        console.log("ok")
+        setValid(true)
+      } else {
+        console.log("ko")
+        setValid(false)
+      }
+    },[name, email, text])
+
   return (
-    <div className={`absolute z-[102] pointer-events-none top-1/2 left-2 right-2 transform -translate-y-1/2 max-w-[40rem] mx-auto border py-3 pl-5 bg-black bg-opacity-40 transform transition-transform duration-700 mx-3 ${
+    <div className={`absolute z-[102]	pointer-events-none top-1/2 left-2 right-2 transform -translate-y-1/2 max-w-[40rem] mx-auto border py-3 pl-5 bg-black bg-opacity-40 transform transition-transform duration-700 mx-3 ${
         isVisible ? 'translate-x-0' : 'translate-y-[250%] hidden'
       }`}>
-            <div className='max-w-[500px] mx-auto'>
+            {
+              sentSuccess === null ? 
+              <div className='max-w-[500px] mx-auto'>
                 <h2 className='font-bold pb-4 pt-3 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-lime-400 text-5xl'>Contact</h2>
                 <div className='grid grid-cols-2'>
-                    <InputField title={"Name"} placeholder={"Jan"} logo={user} update={setName}/>
-                    <InputField title={"Lastname"} placeholder={"Jansens"} logo={user} update={setLastName}/>
-                    <InputField title={"Email"} placeholder={"Jan@jan.com"} logo={logo} update={setEmail}/>
+                    <InputField title={"Name"} placeholder={"Johns"} logo={user} update={setName}/>
+                    <InputField title={"Lastname"} placeholder={"Johnson"} logo={user} update={setLastName}/>
+                    <InputField title={"Email"} placeholder={"Johns@Johnson.com"} logo={logo} update={setEmail}/>
                 </div>
-                <InputArea title={"Bericht"} optional={true} placeholder={"Your message..."} logo={destination}/>
-                <button className="rounded-full py-2 px-4 px-2 border-2 border-slate-700 pointer-events-auto hover:bg-gradient-to-r from-green-500 to-lime-400">Send</button>
+                <InputArea title={"Bericht"} optional={true} placeholder={"Your message..."} logo={destination} update={setText}/>
+                <button 
+                  className={`rounded-full py-2 px-4 border-2 border-slate-700 pointer-events-auto xs:mx-auto 
+                  ${!valid ? 'bg-slate-700 text-gray-400 cursor-not-allowed' : 'hover:bg-gradient-to-r from-green-500 to-lime-400'}
+                  disabled:hover:bg-slate-700 disabled:hover:cursor-not-allowed`}
+                  disabled={!valid}
+                  onClick={(e) => submitForm(e)}>Send</button>
             </div>
-        <div className="absolute top-1/2 left-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>
-        <div className="absolute top-1/2 right-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>
+            : sentSuccess === true ?
+            <SentSuccess/>
+            : <SentFailed/>
+            }
+        {isVisible && <div className="absolute top-1/2 left-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>}
+          {isVisible && <div className="absolute top-1/2 right-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>}
     </div>
   )
 }
