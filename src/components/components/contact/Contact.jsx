@@ -79,7 +79,7 @@ function Contact({cord}) {
                     <InputField title={"Lastname"} placeholder={"Johnson"} logo={user} update={setLastName}/>
                     <InputField title={"Email"} placeholder={"Johns@Johnson.com"} logo={logo} update={setEmail}/>
                 </div>
-                <InputArea title={"Bericht"} optional={true} placeholder={"Your message..."} logo={destination} update={setText}/>
+                <InputArea title={"Message"} optional={true} placeholder={"Your message..."} logo={destination} update={setText}/>
                 <button 
                   className={`rounded-full py-2 px-4 border-2 border-slate-700 pointer-events-auto xs:mx-auto 
                   ${!valid ? 'bg-slate-700 text-gray-400 cursor-not-allowed' : 'hover:bg-gradient-to-r from-green-500 to-lime-400'}
