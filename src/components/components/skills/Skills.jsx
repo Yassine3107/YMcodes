@@ -28,16 +28,12 @@ const Skills = ({cord}) => {
       perc: 75
     },
     {
-      name: "NodeJs",
-      perc: 70
-    },
-    {
-      name: "ElectronJs",
-      perc: 70
-    },
-    {
       name: "Tailwind",
       perc: 75
+    },
+    {
+      name: "NodeJs",
+      perc: 70
     },
     {
       name: "mysql",
@@ -46,6 +42,10 @@ const Skills = ({cord}) => {
     {
       name: "PHP",
       perc: 70
+    },
+    {
+      name: ".NET",
+      perc: 65
     },
     {
       name: "CMS",

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { setScrollTo } from "@/redux/slices/menuSlice";
 
-const cube = (<svg className="xs:w-[50px]" viewBox="0 0 24 24" class="looka-1j8o68f">
+const cube = (<svg className="w-[50px] xs:w-[50px]" viewBox="0 0 24 24" class="looka-1j8o68f">
 <defs id="SvgjsDefs1752"></defs>
 <g id="SvgjsG1753" featurekey="2ou6gm-0" transform="matrix(1, 0, 0, 1, -3, -3)" fill="#ffffff">
  
@@ -30,7 +30,7 @@ const rocket = (
   </svg>
 );
 
-const paperplane = <svg className="xs:w-[25px]" fill="white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
+const paperplane = <svg className="w-[25px] xs:w-[25px]" fill="white"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/></svg>
 
 const Navbar = ({cord}) => {
   const [selected, setSelected] = useState("home");
