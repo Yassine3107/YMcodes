@@ -26,9 +26,9 @@ function Projects({cord}) {
     }, [cord]);
 
   return (
-    <div className={`absolute z-[100] pointer-events-none top-1/2 left-0 right-0 transform -translate-y-1/2 max-w-[60rem] mx-auto border py-5 pl-5 bg-black bg-opacity-60 transform transition-transform duration-700 mx-3 ${
-        isVisible ? 'translate-x-0' : '-translate-y-[250%] hidden'
-      }`}>
+    <div className={`absolute z-[100] pointer-events-none top-1/2 left-0 right-0 transform -translate-y-1/2 max-w-[60rem] mx-auto border py-5 pl-5 bg-black bg-opacity-60 transition-transform duration-700 mx-3 ${
+      isVisible ? 'translate-x-0 opacity-100 visible' : '-translate-y-[250%] opacity-0 invisible'
+    }`}>
         {
           <div className="grid grid-flow-col">
             <div className="grid">

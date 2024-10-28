@@ -93,9 +93,8 @@ const Skills = ({cord}) => {
   }, [loading]);
 
   return (
-    <div className={`absolute z-[100]  pointer-events-none xs:py-2 top-1/2 right-52 xs:right-14 xs:left-3 transform -translate-y-1/2 min-w-[500px] xs:min-w-[300px] border p-5 bg-black bg-opacity-30 xs:bg-opacity-30 transform transition-transform duration-700 ${
-      isVisible ? 'translate-x-0' : 'translate-x-[200%] hidden'
-    }`}>
+<div className={`absolute z-[100] pointer-events-none xs:py-2 top-1/2 right-52 xs:right-14 xs:left-3 min-w-[500px] xs:min-w-[300px] border p-5 bg-black bg-opacity-30 xs:bg-opacity-30 transition-all duration-700 transform ${isVisible ? 'translate-x-0 opacity-100 visible' : 'translate-x-[200%] opacity-0 invisible'} -translate-y-1/2`}>
+
       <div
         ref={skillsRef}
         className="mx-auto relative"

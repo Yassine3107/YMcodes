@@ -39,7 +39,6 @@ function Contact({cord}) {
 
     const submitForm = async (e) => {
       e.preventDefault();
-      console.log(name)
       if (email !== '' && name !== '' && text != '') {
         await addDoc(collection(db, 'messages'), {
           name: name,
@@ -47,10 +46,8 @@ function Contact({cord}) {
           email: email,
           text: text
         }).then((res) => {
-          console.log('success: ', res)
           setSentSuccess(true)
         }).catch((err) => {
-          console.log('error: ', err)
           setSentSuccess(false)
         })
       }
@@ -58,18 +55,16 @@ function Contact({cord}) {
 
     useEffect(() => {
       if (email !== '' && name !== '' && text != '') {
-        console.log("ok")
         setValid(true)
       } else {
-        console.log("ko")
         setValid(false)
       }
     },[name, email, text])
 
   return (
-    <div className={`absolute z-[102]	pointer-events-none top-1/2 left-2 right-2 transform -translate-y-1/2 max-w-[40rem] mx-auto border py-3 pl-5 bg-black bg-opacity-40 transform transition-transform duration-700 mx-3 ${
-        isVisible ? 'translate-x-0' : 'translate-y-[250%] hidden'
-      }`}>
+    <div className={`absolute z-[102] pointer-events-none top-1/2 left-2 right-2 transform -translate-y-1/2 max-w-[40rem] mx-auto border py-3 pl-5 bg-black bg-opacity-40 transition-transform duration-700 mx-3 ${
+      isVisible ? 'translate-x-0 opacity-100 visible' : 'translate-y-[250%] opacity-0 invisible'
+    }`}>
             {
               sentSuccess === null ? 
               <div className='max-w-[500px] mx-auto'>

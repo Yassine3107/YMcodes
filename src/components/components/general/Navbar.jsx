@@ -63,9 +63,7 @@ const Navbar = ({cord}) => {
   }, [selected]);
 
   useEffect(() => {
-      console.log("hier")
       var cordRounded = Math.trunc(cord*100)/100;
-      console.log(cordRounded)
       if (cordRounded === 0) {
         setSelected("home");
         setIndexOfSelectedItem(0)

@@ -33,10 +33,8 @@ function Contact() {
         email: email,
         text: text
       }).then((res) => {
-        console.log('success: ', res)
         setSentSuccess(true)
       }).catch((err) => {
-        console.log('error: ', err)
         setSentSuccess(false)
       })
     }
@@ -60,7 +58,6 @@ function Contact() {
           <InputArea placeholder="Your message" onFormChange={setText}/>
           <button className={`w-[200px] mx-4 smt:mx-1 rounded-lg border-[3px] cyberpunk-button text-xl font-bold relative z-50 border-2 border-[#3B82F6] text-[#3B82F6] hover:text-white py-3 px-8 transition-all duration-300  shadow-lg shadow-blue-500/50 hover:shadow-blue-500/100`}   
             onClick={(e) => {
-              console.log(text, name, email);
               submitForm(e)
             }}>
             Submit
