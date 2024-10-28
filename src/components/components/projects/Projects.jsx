@@ -60,7 +60,7 @@ function Projects({cord}) {
             
             <div className="flex flex-col gap-2 xs:ml-2">
               {projects.map((project, index) => (
-                <span className="group pointer-events-auto relative z-[101] inline-flex items-center text-xs h-[50px] cursor-pointer" onClick={() => {setSelectedProject(project); setSelectedIndex(index)}}>
+                <span key={index} className="group pointer-events-auto relative z-[101] inline-flex items-center text-xs h-[50px] cursor-pointer" onClick={() => {setSelectedProject(project); setSelectedIndex(index)}}>
                   <span className={`pr-1 mr-2 w-[10px] font-bold ${selectedIndex === index ? 'text-white' : 'text-slate-600'}`}>{index + 1}</span>
                   <span className={`absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-lime-400 to-green-500 opacity-0 text-red-500 ${selectedIndex === index ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity duration-300 -mr-[1px]`}></span>
                 </span> 
