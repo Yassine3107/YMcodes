@@ -33,7 +33,7 @@ function Projects({cord}) {
           <div className="grid grid-flow-col">
             <div className="grid">
               <h4 className={`text-3xl mb-4`}>{selectedProject.title}</h4>
-              <p className="text-xs text-justify max-w-[400px]">{selectedProject.description}</p>
+              <p className="xs:text-xs text-justify max-w-[400px] ">{selectedProject.description}</p>
               <div className='grid grid-cols-2 poniter-events-none'>
                 <Tech techs={selectedProject.tech}/>
                 <img 
@@ -60,7 +60,7 @@ function Projects({cord}) {
             
             <div className="flex flex-col gap-2 xs:ml-2">
               {projects.map((project, index) => (
-                <span key={index} className="group pointer-events-auto relative z-[101] inline-flex items-center text-xs h-[50px] cursor-pointer" onClick={() => {setSelectedProject(project); setSelectedIndex(index)}}>
+                <span key={index} className="group pointer-events-auto relative z-[101] inline-flex items-center xs:text-xs h-[50px] cursor-pointer" onClick={() => {setSelectedProject(project); setSelectedIndex(index)}}>
                   <span className={`pr-1 mr-2 w-[10px] font-bold ${selectedIndex === index ? 'text-white' : 'text-slate-600'}`}>{index + 1}</span>
                   <span className={`absolute right-0 top-0 h-full w-[4px] bg-gradient-to-b from-lime-400 to-green-500 opacity-0 text-red-500 ${selectedIndex === index ? 'opacity-100' : 'opacity-0'} group-hover:opacity-100 transition-opacity duration-300 -mr-[1px]`}></span>
                 </span> 
@@ -69,8 +69,8 @@ function Projects({cord}) {
               </div>
           </div>
         }
-        <div className="absolute top-1/2 left-0 h-[2px] w-[20rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>
-        <div className="absolute top-1/2 right-0 h-[2px] w-[20rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>
+        <div className="absolute top-1/2 left-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>
+        <div className="absolute top-1/2 right-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>
     </div>
   )
 }

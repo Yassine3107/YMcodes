@@ -86,8 +86,8 @@ function Contact({cord}) {
             <SentSuccess/>
             : <SentFailed/>
             }
-        {isVisible && <div className="absolute top-1/2 left-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>}
-          {isVisible && <div className="absolute top-1/2 right-0 h-[2px] w-[30rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>}
+        {isVisible && <div className="absolute top-1/2 left-0 h-[2px] w-[40rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>}
+          {isVisible && <div className="absolute top-1/2 right-0 h-[2px] w-[40rem] bg-white transform translate-y-1/2 translate-x-[100%]"></div>}
     </div>
   )
 }

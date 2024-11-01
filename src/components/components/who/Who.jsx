@@ -15,7 +15,7 @@ function Who({cord}) {
     <div className={`absolute top-1/2 left-52 xs:left-20 max-w-[500px] border p-5 bg-black bg-opacity-90 transition-transform duration-700 transform ${isVisible ? 'translate-x-0' : '-translate-x-[250%]'} -translate-y-1/2`}>
 
         <h4 className="text-2xl text-white mb-2">Who is <span>YMcodes</span>?</h4>
-        <p className="text-white text-sm relative z-[103]">Welcome to the cube-driven digital landscape. I craft seamless websites, desktop apps, and applications that bring visions to life.</p>        <div className="absolute top-1/2 left-0 h-[2px] w-[20rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>
+        <p className="text-white smt:text-sm relative z-[103]">Welcome to the cube-driven digital landscape. I craft seamless websites, desktop apps, and applications that bring visions to life.</p>        <div className="absolute top-1/2 left-0 h-[2px] w-[20rem] bg-white transform translate-y-1/2 -translate-x-[100%]"></div>
     </div>
   )
 }
