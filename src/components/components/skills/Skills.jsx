@@ -20,6 +20,10 @@ const Skills = ({cord}) => {
 
   const skills = [
     {
+      name: ".NET",
+      perc: 80
+    },
+    {
       name: "ReactJs",
       perc: 80
     },
@@ -42,10 +46,6 @@ const Skills = ({cord}) => {
     {
       name: "PHP",
       perc: 70
-    },
-    {
-      name: ".NET",
-      perc: 65
     },
     {
       name: "CMS",
